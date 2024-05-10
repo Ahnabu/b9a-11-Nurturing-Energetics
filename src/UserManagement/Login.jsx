@@ -12,7 +12,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 
 
-import UseAuth from "../Hooks/UseAuth/UseAuth";
+import UseAuth from "../Hooks/UseAuth/useAuth";
 import Methods from "./Methods";
 function LogIn() {
 

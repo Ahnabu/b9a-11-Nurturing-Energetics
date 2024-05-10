@@ -2,14 +2,15 @@
 
 import toast, { Toaster } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
-import UseAuth from "../Hooks/UseAuth/UseAuth";
+import useAuth from "../Hooks/UseAuth/useAuth";
+
 
 const Methods = () => {
-    const { googleSingIn} = UseAuth;
+    const { googleSingIn} = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
-    const UserMethod = signInMethod => {
-        signInMethod()
+    const handleGoogle =() => {
+        googleSingIn()
             .then(result => {
                 toast.success('successfully logged in')
                 if (result.user) {
@@ -23,11 +24,7 @@ const Methods = () => {
 
             })
     }
-    const handleGoogle = () => {
-        UserMethod(googleSingIn);
-
-
-    }
+    
    
     return (
         <div>

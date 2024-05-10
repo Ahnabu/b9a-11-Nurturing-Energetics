@@ -1,6 +1,6 @@
 
 
-const NavbarProfile = () => {
+const MyOrder = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const NavbarProfile = () => {
     );
 };
 
-export default NavbarProfile;
+export default MyOrder;

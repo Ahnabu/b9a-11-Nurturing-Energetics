@@ -18,10 +18,10 @@ import { FaEye } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import toast, { Toaster } from 'react-hot-toast';
-import UseAuth from "../Hooks/UseAuth/UseAuth";
+import useAuth from "../Hooks/UseAuth/useAuth";
 import Methods from "./Methods";
 function Register() {
-    const { EmailSingIn, ProfileUpdate } = UseAuth
+    const { EmailSingIn, ProfileUpdate } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState('')

@@ -1,10 +1,11 @@
 import React from "react";
 import {
     Navbar,
-    MobileNav,
+   
     Typography,
     Button,
     IconButton,
+    Collapse,
 
 } from "@material-tailwind/react";
 
@@ -15,13 +16,14 @@ import { Link, NavLink } from "react-router-dom";
 
 // import ThemeToggle from "../Theme/Theme";
 // import ToggleText from './Text/Text'
-import UseAuth from "../../Hooks/UseAuth/UseAuth";
-import NavbarProfile from "../NavabarProfile/NavbarProfile";
+
+import NavbarProfile from "../NavbarProfile/NavbarProfile";
+import useAuth from "../../Hooks/UseAuth/useAuth";
 
 
 export function StickyNavbar() {
     const [openNav, setOpenNav] = React.useState(false);
-    const { user } = UseAuth
+    const { user } = useAuth()
     React.useEffect(() => {
         window.addEventListener(
             "resize",
@@ -116,7 +118,7 @@ export function StickyNavbar() {
                 <div className="flex items-center justify-between text-black">
                     <Typography
 
-                        className="mr-2 md:mr-4 cursor-pointer py-1.5 text-3xl font-bold"
+                        className="mr-2 md:mr-4 cursor-pointer py-1.5 md:text-3xl text-base font-bold"
                     >
                         Nurturing Energetics
                        
@@ -191,7 +193,7 @@ export function StickyNavbar() {
                         {/* <ThemeToggle></ThemeToggle> */}
                     </div>
                 </div>
-                <MobileNav open={openNav}>
+                <Collapse open={openNav}>
                     {navList}
                     <div className="flex items-center gap-x-1">
 
@@ -209,7 +211,7 @@ export function StickyNavbar() {
                         </Link>
 
                     </div>
-                </MobileNav>
+                </Collapse>
 
             </Navbar>
 
