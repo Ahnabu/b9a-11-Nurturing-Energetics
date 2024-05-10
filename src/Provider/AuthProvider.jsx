@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import Swal from "sweetalert2";
 import { auth } from "../../Firebase/firebase.config";
+import axios from 'axios';
 export const AuthContext = createContext(null)
 
 
@@ -64,8 +65,18 @@ const AuthProvider = ({ children }) => {
     }
     <Toaster />
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth,async (currentUser) => {
             console.log('on auth state changed', currentUser);
+            // get token form server using email
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
+                {
+                    email: currentUser.email
+                },
+                {
+                    withCredentials: true
+                }
+            )
+           
             setUser(currentUser);
             setLoading(false);
 

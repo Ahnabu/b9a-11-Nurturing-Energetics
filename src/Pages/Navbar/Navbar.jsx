@@ -41,7 +41,7 @@ export function StickyNavbar() {
                 className="p-1 font-normal"
             >
                 <NavLink to={'/'} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
+                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-primary" : "text-black"
                 } >
                     Home
                 </NavLink>
@@ -53,10 +53,10 @@ export function StickyNavbar() {
                 className="p-1 font-normal"
             >
 
-                <NavLink to={'/allArt'} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
+                <NavLink to={'/all'} className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-primary" : "text-black"
                 } >
-                    All Art & Craft
+                    All Food
                 </NavLink>
             </Typography>
             <Typography
@@ -66,49 +66,13 @@ export function StickyNavbar() {
                 className="p-1 font-normal"
             >
                 <NavLink to={'/addArt'} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
+                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-primary" : "text-black"
                 } >
-                    Add Art & Craft
+                    Gallery 
                 </NavLink>
 
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="text-black"
-                className="p-1 font-normal"
-            >
-                <NavLink to={`/myArt/${user?.email}`} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
-                } >
-                    My Art & Craft
-                </NavLink>
-
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="text-black"
-                className="p-1 font-normal"
-            >
-                <NavLink to={'/user-profile'} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
-                } >
-                    User Profile
-                </NavLink>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="text-black"
-                className="p-1 font-normal"
-            >
-                <NavLink to={'/favorite'} className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
-                } >
-                    Favorite
-                </NavLink>
-            </Typography>
+           
         </ul>
     );
 
@@ -118,10 +82,10 @@ export function StickyNavbar() {
                 <div className="flex items-center justify-between text-black">
                     <Typography
 
-                        className="mr-2 md:mr-4 cursor-pointer py-1.5 md:text-3xl text-base font-bold"
+                        className="mr-2 md:mr-4 cursor-pointer py-1.5 md:text-3xl text-base font-bold text-[#f2c26e] "
                     >
-                        Nurturing Energetics
-                       
+                        Nurturing <span className="text-[#5f431c]">Energetics</span> 
+                        
                     </Typography>
 
                     <div className="flex items-center gap-4">

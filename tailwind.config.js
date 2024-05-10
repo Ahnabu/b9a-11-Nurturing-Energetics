@@ -7,7 +7,13 @@ export default withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#efad62',
+        'secondary': '#5f431c',
+        'tertiary': '#f2c26e'
+      }
+    },
   },
   plugins: [],
 });

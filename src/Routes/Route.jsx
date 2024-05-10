@@ -1,3 +1,4 @@
+import Error from "../Error/Error";
 import AddFood from "../Pages/AddFood/AddFood";
 import Home from "../Pages/Home/Home";
 import Layout from "../Pages/Layout/Layout";
@@ -12,6 +13,8 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout></Layout>,
+      
+            errorElement:<Error/>,
         children: [
         
             {

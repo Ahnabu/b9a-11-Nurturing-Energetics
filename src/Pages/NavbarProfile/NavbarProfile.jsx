@@ -12,6 +12,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth/useAuth";
+
 const NavbarProfile = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { LogOut, user } = useAuth();
@@ -31,7 +32,7 @@ const NavbarProfile = () => {
                 </Tooltip>
 
 
-                <Button onClick={handleLogOut} className="ml-4 hidden md:block">Log Out</Button>
+                <Button onClick={handleLogOut} className="ml-4 hidden md:block bg-primary text-secondary">Log Out</Button>
             </div>
             <Toaster
                 position="top-right" />
