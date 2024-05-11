@@ -5,18 +5,20 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Typography, Button, } from "@material-tailwind/react";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 
 
-import UseAuth from "../Hooks/UseAuth/useAuth";
+
 import Methods from "./Methods";
+// import useAuth from "../Hooks/UseAuth/useAuth";
+import { AuthContext } from "../Provider/AuthProvider";
 function LogIn() {
 
-    const { LogInEmail} = UseAuth;
+    const { LogInEmail,setUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [see, setSee] = useState(false);
@@ -26,21 +28,20 @@ function LogIn() {
 
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
-        const name = form.get('name');
-        const photoURL = form.get('photoURL');
+       
         const password = form.get('password');
-        console.log(email, password, name, photoURL);
+        console.log(email, password, );
 
 
         LogInEmail(email, password)
             .then(res => {
                 console.log(res);
                 const user = { email }
-                console.log(user);
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
                     .then(response => {
                         console.log(response.data);
                         if (response.data.success) {
+                            setUser(response.user)
                             navigate(location?.state || '/')
 
 
@@ -53,13 +54,13 @@ function LogIn() {
             .catch(error => {
                 console.log(error);
             })
-        // .then(result => {
-        //     if (result?.user) {
-        //         navigate(location?.state || '/')
-        //         // axios
+        .then(result => {
+            if (result?.user) {
+                navigate(location?.state || '/')
+                // axios
 
-        //     }
-        // });
+            }
+        });
 
     }
 

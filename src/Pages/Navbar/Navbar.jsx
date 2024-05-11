@@ -65,7 +65,7 @@ export function StickyNavbar() {
                 color="text-black"
                 className="p-1 font-normal"
             >
-                <NavLink to={'/addArt'} className={({ isActive, isPending }) =>
+                <NavLink to={'/gallery'} className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? " p-2 underline font-bold text-primary" : "text-black"
                 } >
                     Gallery 

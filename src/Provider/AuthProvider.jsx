@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import Swal from "sweetalert2";
 import { auth } from "../../Firebase/firebase.config";
-import axios from 'axios';
+
 export const AuthContext = createContext(null)
 
 
@@ -33,8 +33,10 @@ const AuthProvider = ({ children }) => {
     const LogInEmail = async (email, password) => {
         try {
             setLoading(true);
-            const result = await signInWithEmailAndPassword(auth, email, password);
-            setUser(result.user);
+           return await signInWithEmailAndPassword(auth, email, password)
+        
+              
+           
         } catch (error) {
             toast.error('something went wrong')
             return console.log(error);
@@ -65,20 +67,14 @@ const AuthProvider = ({ children }) => {
     }
     <Toaster />
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth,async (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth,(currentUser) => {
             console.log('on auth state changed', currentUser);
             // get token form server using email
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
-                {
-                    email: currentUser.email
-                },
-                {
-                    withCredentials: true
-                }
-            )
-           
+            // console.log(currentUser.email);
+         
             setUser(currentUser);
             setLoading(false);
+           
 
         })
         return () => {

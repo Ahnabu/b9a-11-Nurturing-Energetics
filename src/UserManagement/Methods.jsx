@@ -3,26 +3,40 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from "../Hooks/UseAuth/useAuth";
+import axios from 'axios';
 
 
 const Methods = () => {
     const { googleSingIn} = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
-    const handleGoogle =() => {
-        googleSingIn()
-            .then(result => {
-                toast.success('successfully logged in')
-                if (result.user) {
+    const handleGoogle =async() => {
+       
+     
+        try {
+            await googleSingIn()
+                .then(async res => {
+                    const user = res?.user?.email
+                     await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
+                        user,
+                        {
+                            withCredentials: true
+                        }
+                    ),
+           
+                    toast.success('successfully logged in')
+                if (res.user) {
                     navigate(location?.state || '/')
 
-                }
-            })
-            .catch(error => {
-                toast(error.message)
+                } 
+                })
+                    
+                
+        }
+            catch(error) {
+                toast.error(error.message)
                 console.log(error)
-
-            })
+}
     }
     
    

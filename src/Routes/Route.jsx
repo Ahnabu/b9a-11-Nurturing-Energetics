@@ -1,5 +1,7 @@
 import Error from "../Error/Error";
 import AddFood from "../Pages/AddFood/AddFood";
+import AllFoods from "../Pages/AllFoods/AllFoods";
+import Gallery from "../Pages/Gallery/Gallery";
 import Home from "../Pages/Home/Home";
 import Layout from "../Pages/Layout/Layout";
 import MyFood from "../Pages/MyFood/MyFood";
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
             {
                 path: "/add",
                 element: <AddFood></AddFood>,
+            },
+            {
+                path: "/all",
+                element: <AllFoods></AllFoods>,
+            },
+            {
+                path: "/gallery",
+                element: <Gallery></Gallery>,
             },
         ]
     },
