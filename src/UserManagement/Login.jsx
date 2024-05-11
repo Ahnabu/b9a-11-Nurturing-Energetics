@@ -1,7 +1,4 @@
 
-
-
-
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Typography, Button, } from "@material-tailwind/react";
@@ -11,11 +8,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 
-
-
 import Methods from "./Methods";
 // import useAuth from "../Hooks/UseAuth/useAuth";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 function LogIn() {
 
     const { LogInEmail,setUser} = useContext(AuthContext);
@@ -23,46 +19,32 @@ function LogIn() {
     const location = useLocation();
     const [see, setSee] = useState(false);
 
-    const handleLogIn = e => {
+    const handleLogIn = async e => {
         e.preventDefault();
 
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
        
         const password = form.get('password');
-        console.log(email, password, );
-
-
-        LogInEmail(email, password)
-            .then(res => {
-                console.log(res);
-                const user = { email }
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
-                    .then(response => {
-                        console.log(response.data);
-                        if (response.data.success) {
-                            setUser(response.user)
-                            navigate(location?.state || '/')
-
-
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        .then(result => {
-            if (result?.user) {
-                navigate(location?.state || '/')
-                // axios
-
-            }
-        });
-
+        console.log(email, password, );        
+        try {
+            const result = await LogInEmail(email, password)
+            console.log(result.user);
+            await axios.post(
+                `${import.meta.env.VITE_API_URL}/jwt`,
+                { email: result?.user?.email },
+                { withCredentials: true })
+            toast.success('Sing in Successful')
+            setUser(result.user)
+            navigate(location?.state || '/', { replace: true })
+            
+        }
+        catch (error) {
+            toast.error(error.message)
+            console.log(error)
+        }
     }
+
 
 
     return (

@@ -20,14 +20,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from "../Hooks/UseAuth/useAuth";
 import Methods from "./Methods";
+import axios from "axios";
 function Register() {
-    const { EmailSingIn, ProfileUpdate } = useAuth()
+    const { EmailSingIn, setUser } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState('')
     const [see, setSee] = useState(false);
 
-    const handleRegistration = e => {
+    const handleRegistration = async e => {
         e.preventDefault();
 
         const form = new FormData(e.currentTarget);
@@ -61,23 +62,25 @@ function Register() {
             return false;
         }
         setError('')
-        EmailSingIn(email, password, name, photoURL)
+        
 
+        try {
+            const result = await EmailSingIn(email, password, name, photoURL)
+            console.log(result.user);
+            await axios.post(
+                `${import.meta.env.VITE_API_URL}/jwt`,
+                { email: result?.user?.email },
+                { withCredentials: true })
+            toast.success('Sing in Successful')
+            setUser(result.user)
+            navigate(location?.state || '/', { replace: true })
 
-            .then(result => {
-                toast.success('successfully logged in')
-                ProfileUpdate(name, photoURL)
-                    .then(() => {
-                        if (result.user) {
-                            navigate(location?.state || '/')
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        toast.error(error.message)
-                    })
-            })
-
+        }
+        catch (error) {
+            toast.error(error.message)
+            console.log(error)
+        }
+    
     }
 
 

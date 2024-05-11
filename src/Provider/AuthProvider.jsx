@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import Swal from "sweetalert2";
 import { auth } from "../../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 
@@ -55,8 +56,12 @@ const AuthProvider = ({ children }) => {
             .catch((error) => { toast.error(error) });
     }
     const LogOut = () => {
+      
         signOut(auth)
-            .then(() => {
+            .then(async () => {
+             
+               const {data}= await axios.get(`${import.meta.env.VITE_API_URL}/logout`,{withCredentials:true})
+                console.log(data);
                 setUser(null)
                 toast.success('successfully logged out')
             })
@@ -121,6 +126,7 @@ const AuthProvider = ({ children }) => {
         getLoved,
         state,
         setState,
+        setUser
 
     }
 

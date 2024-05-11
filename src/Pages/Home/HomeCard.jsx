@@ -2,7 +2,7 @@
 
 
 const HomeCard = ({ food }) => {
-    console.log(food);
+//  console.log(food);
     const { food_name, food_image, price,food_category } = food
     return (
         <div className="border border-secondary mx-auto rounded-md">

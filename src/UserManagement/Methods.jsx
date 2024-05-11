@@ -7,39 +7,33 @@ import axios from 'axios';
 
 
 const Methods = () => {
-    const { googleSingIn} = useAuth()
+    const { googleSingIn,setUser } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
-    const handleGoogle =async() => {
-       
-     
-        try {
-            await googleSingIn()
-                .then(async res => {
-                    const user = res?.user?.email
-                     await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
-                        user,
-                        {
-                            withCredentials: true
-                        }
-                    ),
-           
-                    toast.success('successfully logged in')
-                if (res.user) {
-                    navigate(location?.state || '/')
+    const handleGoogle = async () => {
 
-                } 
-                })
-                    
-                
+
+        try {
+            const result = await googleSingIn()
+            console.log(result.user);
+
+
+
+             await axios.post(
+                `${import.meta.env.VITE_API_URL}/jwt`,
+                { email: result?.user?.email },
+                { withCredentials: true })
+            toast.success('Sing in Successful')
+            setUser(result.user)
+            navigate(location?.state || '/', { replace: true })
         }
-            catch(error) {
-                toast.error(error.message)
-                console.log(error)
-}
+        catch (error) {
+            toast.error(error.message)
+            console.log(error)
+        }
     }
-    
-   
+
+
     return (
         <div>
             <div className="flex items-center w-full my-4">
@@ -55,7 +49,7 @@ const Methods = () => {
                     <p>Login with Google</p>
                 </button>
 
-           
+
                 <Toaster />
             </div>
         </div>
