@@ -14,7 +14,7 @@ console.log(id);
            
     },[id])
     console.log(food);
-    const { food_name, food_image, price, food_category, description, food_origin, quantity, made_by } = food
+    const { food_name, food_image, price, food_category, description, food_origin, quantity, made_by, _id, purchase_amount } = food
     return (
         <div>
             <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto mt-4" >
@@ -36,6 +36,7 @@ console.log(id);
                            
                         <div className="flex flex-col md:flex-row justify-between text-start">
                             <p className="block mt-2 text-xl font-semibold text-secondary transition-colors duration-300 transform dark:text-white hover:text-primary hover:underline" > Made by: {made_by}  </p>
+                            <p className="block mt-2  font-semibold text-secondary transition-colors duration-300 transform dark:text-white hover:text-primary hover:underline" >Total Purchases: {purchase_amount}  </p>
                             
                             <p className="block mt-2  font-semibold text-secondary transition-colors duration-300 transform dark:text-white hover:text-primary hover:underline" > Quantity: {quantity} </p>
                             
@@ -48,12 +49,13 @@ console.log(id);
                         </div>
 
                         <div className="mt-4">
-                        <Link to={'/purchase'}>
+                        <Link to={`/purchase/${_id}`}>
                             <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary">Purchase </button>
                             </Link>
                         </div>
                     </div>
             </div>
+           
         </div>
     );
 };

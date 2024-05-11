@@ -12,6 +12,7 @@ import Register from "../UserManagement/Register";
 
 import { createBrowserRouter } from "react-router-dom";
 import Purchase from "../Pages/Purchase/Purchase";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -54,8 +55,8 @@ export const router = createBrowserRouter([
                 element: <Gallery></Gallery>,
             },
             {
-                path: "/purchase",
-                element: <Purchase></Purchase>,
+                path: "/purchase/:id",
+                element:<PrivetRoute><Purchase></Purchase> </PrivetRoute> ,
             },
             {
                 path: "/details/:id",

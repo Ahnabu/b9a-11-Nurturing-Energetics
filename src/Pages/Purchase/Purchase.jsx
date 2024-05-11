@@ -1,9 +1,83 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth/useAuth";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 
 const Purchase = () => {
+    const { id } = useParams()
+   
+    const {user}=useAuth()
+    const [food, setFood] = useState([])
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_API_URL}/details/${id}`)
+            .then(res => {
+                setFood(res.data)
+            })
+
+    }, [id])
+    
+    const { food_name, food_image, price, quantity, purchase_amount } = food
+    let item =quantity
+   let [Quantity, setQuantity]=useState(item)
+    const handlePurchase = () => {
+        if(quantity==0) return toast.error('This product is not available now')
+        setQuantity(quantity - 1)
+        
+        console.log(Quantity);
+       
+        
+        axios.put(`${import.meta.env.VITE_API_URL}/details/${id}`, {
+            quantity: quantity -1,
+            purchase_amount: purchase_amount + 1
+        })
+           .then(res => {
+               console.log(res.data);
+               if (res.data.modifiedCount > 0) {
+                   Swal.fire({
+                       title: 'Success',
+                       text: 'Successfully Purchased This item',
+                       icon: 'success',
+                       confirmButtonText: 'Cool'
+                   })
+               }
+            })
+           .catch(err => {
+                console.log(err);
+            })
+    }
     return (
         <div>
-            
+            <section className="dark:bg-gray-100 dark:text-gray-800 text-start">
+                <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-around">
+                    <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+                        <img src={`${food_image}`} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 rounded-md" />
+                    </div>
+                    <div className="flex flex-col justify-center p-6 text-start rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+                        <h1 className="text-5xl font-bold leading-none sm:text-6xl text-secondary">{food_name}
+                            
+                        </h1>
+                        <p className="mt-4 mb-5 text-lg sm:mb-12"> Price: {price} only
+                       
+                        </p>
+                        <p className="mb-5 text-lg sm:mb-12"> Quantity: {Quantity}                       
+                        </p>
+                        <div className="  ">
+                            <p>
+                                <span className="text-bold ">Buyer Name : {user.displayName} </span>
+                            </p>
+                            
+                            <p>
+                                <span className="text-bold ">Buyer Email : {user.email} </span>
+                            </p>
+                            
+                        </div>
+                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary my-4" onClick={()=>handlePurchase()}>Confirm Purchase </button>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
