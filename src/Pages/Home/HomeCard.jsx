@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-
+import { Link } from "react-router-dom";
 
 const HomeCard = ({ food }) => {
 //  console.log(food);
-    const { food_name, food_image, price,food_category } = food
+    const { food_name, food_image, price,food_category,_id } = food
     return (
         <div className="border border-secondary mx-auto rounded-md">
             <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
@@ -17,7 +17,9 @@ const HomeCard = ({ food }) => {
                         </div>
 
                     </div>
-                    <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View Details</button>
+                    <Link to={`/details/${_id}`}>
+                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View Details</button>
+                    </Link>
                 </div>
             </div>
         </div>

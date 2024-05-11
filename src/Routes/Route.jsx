@@ -2,6 +2,7 @@ import Error from "../Error/Error";
 import AddFood from "../Pages/AddFood/AddFood";
 import AllFoods from "../Pages/AllFoods/AllFoods";
 import Gallery from "../Pages/Gallery/Gallery";
+import Details from "../Pages/Details/Details";
 import Home from "../Pages/Home/Home";
 import Layout from "../Pages/Layout/Layout";
 import MyFood from "../Pages/MyFood/MyFood";
@@ -50,6 +51,11 @@ export const router = createBrowserRouter([
             {
                 path: "/gallery",
                 element: <Gallery></Gallery>,
+            },
+            {
+                path: "/details/:id",
+                element: <Details></Details>,
+                loader: (params) => fetch(`${ import.meta.env.VITE_API_URL }/details/${params.id}`)
             },
         ]
     },
