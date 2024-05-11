@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import HomeCard from "./HomeCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [foods, setFoods] = useState([])
@@ -21,6 +22,11 @@ const Home = () => {
                  {
                 foods.map(food =><HomeCard key={food._id} food={food}></HomeCard>)
             }
+            </div>
+            <div className="text-center mt-4 ">
+                 <Link to={'/all'} >
+                    <button type="button" className="flex items-center  w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
+            </Link>
             </div>
            
         </div>
