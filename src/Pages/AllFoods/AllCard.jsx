@@ -22,7 +22,7 @@ const AllCard = ({ food }) => {
 
                     </div>
                     <Link to={`/details/${_id}`}>
-                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View Details</button>
+                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary">View Details</button>
                     </Link>
                     
                 </div>

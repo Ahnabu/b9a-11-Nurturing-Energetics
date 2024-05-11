@@ -11,6 +11,7 @@ import LogIn from "../UserManagement/Login";
 import Register from "../UserManagement/Register";
 
 import { createBrowserRouter } from "react-router-dom";
+import Purchase from "../Pages/Purchase/Purchase";
 
 export const router = createBrowserRouter([
     {
@@ -53,9 +54,13 @@ export const router = createBrowserRouter([
                 element: <Gallery></Gallery>,
             },
             {
+                path: "/purchase",
+                element: <Purchase></Purchase>,
+            },
+            {
                 path: "/details/:id",
                 element: <Details></Details>,
-                loader: (params) => fetch(`${ import.meta.env.VITE_API_URL }/details/${params.id}`)
+        
             },
         ]
     },
