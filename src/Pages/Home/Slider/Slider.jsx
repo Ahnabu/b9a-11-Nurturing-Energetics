@@ -44,20 +44,29 @@ function Slider() {
 
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/Syw8SCf/image.png)` }} id="001" className='item-end element'>
 
-
-                </SwiperSlide>
-
-                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/b1z4rwt/image.png)` }} id="002" className='item-end element  '>
-                    <div className='flex flex-col  mx-auto lg:flex-row-reverse justify-between w-5/6' >
-
-
+                    <div className=' text-center z-20' >
+                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...NURTURING ENERGETICS...</h1>
+                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>NURTURING ENERGETICS: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/Zc2xqr7/image.png)` }} id="003" className='item-end element '>
 
+                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/cyj8d9C/image.png)` }} id="002" className='item-end element  '>
+                    <div className=' text-center z-20' >
+                 <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...NURTURING ENERGETICS...</h1>
+                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>NURTURING ENERGETICS: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
+                    </div>
                 </SwiperSlide>
-                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/724Ybpd/image.png)` }} id="004" className='item-end element '>
-
+                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/gmNgq8T/image.png)` }} id="003" className='item-end element '>
+                    <div className=' text-center z-20' >
+                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...NURTURING ENERGETICS...</h1>
+                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>NURTURING ENERGETICS: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/L84qxcg/image.png)` }} id="004" className='item-end element '>
+                    <div className=' text-center z-20' >
+                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...NURTURING ENERGETICS...</h1>
+                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>NURTURING ENERGETICS: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
+                    </div>
                 </SwiperSlide>
 
                 <div className="autoplay-progress" slot="container-center">
