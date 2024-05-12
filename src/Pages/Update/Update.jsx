@@ -16,13 +16,14 @@ import useAuth from "../../Hooks/UseAuth/useAuth";
 import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 // @heroicons/react
 
 const Update = () => {
-    const {id}= useParams()
-    const { user, setState, state } = useAuth()
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const {setState, state } = useAuth()
     const [food, setFood] = useState([])
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/details/${id}`)
@@ -44,9 +45,8 @@ const Update = () => {
         const quantity = e.target.quantity.value;
         const food_origin = e.target.food_origin.value;
 
-        const email = user?.email
-        const made_by = user?.displayName
-        const { info } = {
+       
+        const info  = {
             food_image,
             food_name,
             food_category,
@@ -54,17 +54,22 @@ const Update = () => {
             price,
             quantity,
             food_origin,
-            email,
-            made_by,
+          
+            
         }
         console.log(info);
-        await axios.put(`${import.meta.env.VITE_API_URL}/update/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/update/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(info)
         })
-
+            .then(res => res.json())
             .then(data => {
- console.log(data.data);
-                if (data.data.modifiedCount>0) {
+
+                if (data.modifiedCount > 0) {
+
                    
                     Swal.fire({
                         title: 'Success',
@@ -72,7 +77,8 @@ const Update = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
-                    setState(!state)
+                    setState(!state);
+                    navigate('/')
                 }
 
             })
