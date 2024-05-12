@@ -28,13 +28,13 @@ const AddFood = () => {
         const food_name = e.target.food_name.value;
         const food_category = e.target.food_category.value ;
         const description = e.target.short_description.value;
-        const price = e.target.price.value;
+        const price =`$ ${e.target.price.value}`;
         const quantity = e.target.quantity.value;
         const food_origin = e.target.food_origin.value;
     
         const email =  user?.email
         const made_by = user?.displayName
-        const info = {
+        const {info }= {
             food_image,
             food_name,
             food_category,
@@ -46,7 +46,9 @@ const AddFood = () => {
             made_by,
         }
         console.log(info);
-        await axios.post(`${import.meta.env.VITE_API_URL}/add`)
+        await axios.post(`${import.meta.env.VITE_API_URL}/add`, {
+            body: JSON.stringify(info)
+        })
             
             .then(data => {
 
@@ -153,11 +155,12 @@ const AddFood = () => {
                             </Typography>
                             <Input
                                 size="lg"
-                                placeholder="$20 (add currency sign)"
+                                placeholder="$20 (currency dollar)"
                                 labelProps={{
                                     className: "hidden",
                                 }}
                                 type="number"
+                                step={0.01}
                                 className="w-full placeholder:opacity-100 focus:border-primary border-t-blue-gray-200"
                                 name="price"
                             />

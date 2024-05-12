@@ -19,18 +19,25 @@ const Purchase = () => {
 
     }, [id])
     
-    const { food_name, food_image, price, quantity, purchase_amount } = food
+    const { food_name, food_image, price, quantity, purchase_amount,email } = food
     
    let [Quantity, setQuantity]=useState(quantity)
     const handlePurchase = () => {
-         
-        if (quantity > 0) {
+        if (email == user?.email) {
+            Swal.fire({
+                title: 'Error',
+                text: 'You can not buy your own product',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
+         }
+        else if (quantity > 0) {
             setQuantity(quantity - 1)
 
         axios.put(`${import.meta.env.VITE_API_URL}/details/${id}`, {
       
             quantity: quantity -1,
-            purchase_amount: purchase_amount + 1
+            purchase_amount: purchase_amount ? purchase_amount : 0 + 1
         })
            .then(res => {
                console.log(res.data);

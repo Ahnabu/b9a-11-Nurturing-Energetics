@@ -72,14 +72,14 @@ const AuthProvider = ({ children }) => {
     }
     <Toaster />
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth,(currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth,async (currentUser) => {
             console.log('on auth state changed', currentUser);
             // get token form server using email
             setUser(currentUser);
-            axios.get(`${import.meta.env.VITE_API_URL}/user/${user?.email}`, {
+            await axios.get(`${import.meta.env.VITE_API_URL}/user/${user?.email}`, {
                 withCredentials: true,
                 params: {
-                    email: currentUser.email
+                    email: currentUser?.email
                 }
             })          
             setLoading(false);
@@ -89,7 +89,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             unSubscribe()
         }
-    }, []);
+    }, [user?.email]);
     const getLoved = () => {
         const storedBooks = localStorage.getItem('love-list');
 
