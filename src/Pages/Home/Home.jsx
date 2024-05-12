@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import HomeCard from "./HomeCard";
 import { Link } from "react-router-dom";
+import Slider from "./Slider/Slider";
 
 const Home = () => {
     const [foods, setFoods] = useState([])
@@ -14,7 +15,10 @@ const Home = () => {
    
   
     return (
-        <div className="text-center mt-4 p-4">
+        <div>
+            <Slider></Slider>
+            <div className="text-center mt-4 p-4">
+           
             <h1 className="text-secondary">Top Foods</h1>
             <p>
                 Discover our top picks! Savor the flavors loved by countless customers. From mouthwatering classics to innovative delights, explore our collection curated based on popular demand. Indulge in the dishes that have garnered the most purchases, promising satisfaction with every bite. Join the ranks of delighted customers and experience culinary excellence like never before. Dive into our top food section today!</p>
@@ -30,6 +34,8 @@ const Home = () => {
             </div>
            
         </div>
+        </div>
+        
     );
 };
 
