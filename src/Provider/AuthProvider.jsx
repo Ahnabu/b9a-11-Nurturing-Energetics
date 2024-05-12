@@ -75,9 +75,13 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth,(currentUser) => {
             console.log('on auth state changed', currentUser);
             // get token form server using email
-            // console.log(currentUser.email);
-         
             setUser(currentUser);
+            axios.get(`${import.meta.env.VITE_API_URL}/user/${user?.email}`, {
+                withCredentials: true,
+                params: {
+                    email: currentUser.email
+                }
+            })          
             setLoading(false);
            
 

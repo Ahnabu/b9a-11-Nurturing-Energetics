@@ -18,9 +18,17 @@ const AllFoods = () => {
         setFilter(filter)
         console.log(filter)
     }
+    const containerStyles = {
+       
+       
+        // background: linear - gradient(to right, rgba(128, 0, 128, 0.7), rgba(255, 0, 0, 0.7)),
+        backgroundImage: `url(https://i.ibb.co/BBQCnXh/image.png)`
+        // Add more CSS properties as needed
+    };
     return (
         <div>
-            <div className="min-h-[60vh] w-full bg-cover rounded-2xl  text-center bg-gradient-to-t from-black bg-opacity-0 to-transparent items-center bg-center" style={{ backgroundImage: `url(https://i.ibb.co/BBQCnXh/image.png)` }}>
+            <div style={containerStyles}>
+                  <div className="min-h-[60vh] w-full bg-cover rounded-2xl  text-center bg-gradient-to-t from-black  bg-opacity-0 to-transparent items-center bg-center bgImg"  >
                
                 <h1 className="text-primary text-center font-bold pt-16 md:pt-32 p-auto ">All Foods</h1>
                 <div className="text-2xl p-6 md:p-8 text-white text-center">
@@ -43,6 +51,8 @@ const AllFoods = () => {
                 </div>
                 
             </div>
+            </div>
+          
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 mx-auto justify-between text-center">
                 {
                     foods.map(food => <AllCard key={food._id} food={food}></AllCard>)

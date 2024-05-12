@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {   useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth/useAuth";
-import toast from "react-hot-toast";
+
 import Swal from "sweetalert2";
 
 
 const Purchase = () => {
     const { id } = useParams()
-   
+  const navigate = useNavigate()
     const {user}=useAuth()
     const [food, setFood] = useState([])
     useEffect(() => {
@@ -20,16 +20,15 @@ const Purchase = () => {
     }, [id])
     
     const { food_name, food_image, price, quantity, purchase_amount } = food
-    let item =quantity
-   let [Quantity, setQuantity]=useState(item)
+    
+   let [Quantity, setQuantity]=useState(quantity)
     const handlePurchase = () => {
-        if(quantity==0) return toast.error('This product is not available now')
-        setQuantity(quantity - 1)
-        
-        console.log(Quantity);
-       
-        
+         
+        if (quantity > 0) {
+            setQuantity(quantity - 1)
+
         axios.put(`${import.meta.env.VITE_API_URL}/details/${id}`, {
+      
             quantity: quantity -1,
             purchase_amount: purchase_amount + 1
         })
@@ -42,12 +41,26 @@ const Purchase = () => {
                        icon: 'success',
                        confirmButtonText: 'Cool'
                    })
+                   navigate('/')
+
                }
             })
            .catch(err => {
                 console.log(err);
             })
+        }
+        else {
+            
+                Swal.fire({
+                    title: 'Error',
+                    text: 'This product is not available now',
+                    icon: 'error',
+                    confirmButtonText: 'Close'
+                })
+            
+        }
     }
+    const currentDate = new Date(Date.now()).toLocaleString()
     return (
         <div>
             <section className="dark:bg-gray-100 dark:text-gray-800 text-start">
@@ -62,7 +75,7 @@ const Purchase = () => {
                         <p className="mt-4 mb-5 text-lg sm:mb-12"> Price: {price} only
                        
                         </p>
-                        <p className="mb-5 text-lg sm:mb-12"> Quantity: {Quantity}                       
+                        <p className="mb-5 text-lg sm:mb-12"> Quantity: {quantity}                       
                         </p>
                         <div className="  ">
                             <p>
@@ -71,6 +84,9 @@ const Purchase = () => {
                             
                             <p>
                                 <span className="text-bold ">Buyer Email : {user.email} </span>
+                            </p>
+                            <p>
+                                <span className="text-bold "> Buying Date : {currentDate} </span>
                             </p>
                             
                         </div>

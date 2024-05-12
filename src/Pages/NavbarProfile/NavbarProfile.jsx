@@ -24,7 +24,7 @@ const NavbarProfile = () => {
         <div className=" relative top-2 items-center ">
             <div className="flex justify-end items-center">
                 <Tooltip content={`${user.displayName}`}>
-                    <Button onClick={() => setIsOpen(!isOpen)} className={`w-12 h-12 rounded-full bg-primary border border-secondary dark:bg-gray-500 p-1 `}>
+                    <Button onClick={() => setIsOpen(!isOpen)} className={`w-12 h-12 rounded-full bg-secondary border border-secondary dark:bg-gray-500 p-1 `}>
 
                         {user?.photoURL ? <div className="w-12 h-12 rounded-full bg-cover -mt-[5px] -ml-[5px] " style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[5.5px] -ml-[5px]" />}
 
