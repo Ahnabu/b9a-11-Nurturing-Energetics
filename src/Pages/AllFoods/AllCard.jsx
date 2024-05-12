@@ -13,7 +13,7 @@ const AllCard = ({ food }) => {
                         <h2 className="text-3xl font-semibold tracking-wide">{food_name} </h2>
                         <div>
                             <p className="dark:text-gray-800">Food Category :{food_category} </p>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mt-2">
                                 <p className="dark:text-gray-800">Price :{price} </p>
                                 <p className="dark:text-gray-800">Quantity :{quantity} </p>
                             </div>
@@ -22,7 +22,7 @@ const AllCard = ({ food }) => {
 
                     </div>
                     <Link to={`/details/${_id}`}>
-                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary">View Details</button>
+                        <button type="button" className="flex items-center text-secondary bg-primary justify-center w-full py-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary">View Details</button>
                     </Link>
                     
                 </div>
