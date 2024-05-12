@@ -13,6 +13,7 @@ import Register from "../UserManagement/Register";
 import { createBrowserRouter } from "react-router-dom";
 import Purchase from "../Pages/Purchase/Purchase";
 import PrivetRoute from "./PrivetRoute";
+import Update from "../Pages/Update/Update";
 
 export const router = createBrowserRouter([
     {
@@ -36,15 +37,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/my-food",
-                element: <MyFood></MyFood>,
+                element:<PrivetRoute><MyFood></MyFood></PrivetRoute> ,
             },
             {
                 path: "/my-ordered",
-                element: <MyOrder></MyOrder>,
+                element:<PrivetRoute><MyOrder></MyOrder></PrivetRoute> ,
             },
             {
                 path: "/add",
-                element: <AddFood></AddFood>,
+                element:<PrivetRoute><AddFood></AddFood></PrivetRoute> ,
             },
             {
                 path: "/all",
@@ -61,6 +62,11 @@ export const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <Details></Details>,
+        
+            },
+            {
+                path: "/update/:id",
+                element:<PrivetRoute> <Update></Update></PrivetRoute>,
         
             },
         ]

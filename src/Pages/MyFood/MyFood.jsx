@@ -49,9 +49,9 @@ const MyFood = () => {
                             <td className="lg:p-2">{item.price}</td>
                             <td className="hide p-2">{item.purchase_amount|| 0 }</td>
                            
-                            <td><Link to={`/details/${item._id}`}><Button
+                            <td><Link to={`/update/${item._id}`}><Button
                                 className={`flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary`}
-                                >View Details</Button> </Link>  </td>
+                                >Update</Button> </Link>  </td>
                         </tr>
                     ))}
                 </tbody>

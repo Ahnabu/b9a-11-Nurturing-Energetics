@@ -13,7 +13,7 @@ console.log(id);
             })
            
     },[id])
-    console.log(food);
+    
     const { food_name, food_image, price, food_category, description, food_origin, quantity, made_by, _id, purchase_amount } = food
     return (
         <div>
