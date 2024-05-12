@@ -15,7 +15,7 @@ import {
 import useAuth from "../../Hooks/UseAuth/useAuth";
 import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet";
-import axios from "axios";
+
 // @heroicons/react
 
 const AddFood = () => {
@@ -34,7 +34,7 @@ const AddFood = () => {
     
         const email =  user?.email
         const made_by = user?.displayName
-        const {info }= {
+        const info = {
             food_image,
             food_name,
             food_category,
@@ -46,13 +46,20 @@ const AddFood = () => {
             made_by,
         }
         console.log(info);
-        await axios.post(`${import.meta.env.VITE_API_URL}/add`, {
+        fetch(`${import.meta.env.VITE_API_URL}/add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(info)
         })
-            
+            .then(res => res.json())
             .then(data => {
 
-                if (data.data.insertedId) {
+                
+
+
+                if (data.insertedId) {
 
                     Swal.fire({
                         title: 'Success',
