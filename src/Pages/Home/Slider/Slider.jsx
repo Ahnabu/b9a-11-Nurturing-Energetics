@@ -46,10 +46,10 @@ function Slider() {
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/Syw8SCf/image.png)` }} id="001" className='item-end element'>
 
                     <div className=' text-center z-20' >
-                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
+                        <h1 className='text-primary font-bold text-2xl md:text-3xl'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>Nurturing Energetics: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
                         <Link to={'/all'} >
-                            <button type="button" className="flex items-center  w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
+                            <button type="button" className="flex items-center  md:w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
                         </Link>
                         
                     </div>
@@ -57,28 +57,28 @@ function Slider() {
 
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/cyj8d9C/image.png)` }} id="002" className='item-end element  '>
                     <div className=' text-center z-20' >
-                 <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
+                 <h1 className='text-primary font-bold text-2xl md:text-3xl'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>Nurturing Energetics: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
                         <Link to={'/all'} >
-                            <button type="button" className="flex items-center  w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
+                            <button type="button" className="flex items-center  md:w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
                         </Link>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/gmNgq8T/image.png)` }} id="003" className='item-end element '>
                     <div className=' text-center z-20' >
-                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
+                        <h1 className='text-primary font-bold text-2xl md:text-3xl'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>Nurturing Energetics: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
                         <Link to={'/all'} >
-                            <button type="button" className="flex items-center  w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
+                            <button type="button" className="flex items-center  md:w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
                         </Link>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/L84qxcg/image.png)` }} id="004" className='item-end element '>
                     <div className=' text-center z-20' >
-                        <h1 className='text-primary font-bold'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
+                        <h1 className='text-primary font-bold text-2xl md:text-3xl'>WELCOME <br /><span className='text-tertiary'>to</span> <br />...Nurturing Energetics...</h1>
                        <p className='text-xl text-white mt-4 md:mt-8 p-4 md:p-6 lg:p-8'>Nurturing Energetics: Where flavors harmonize, ingredients flourish, and every bite ignites a symphony of culinary delight and wellness.</p>
                         <Link to={'/all'} >
-                            <button type="button" className="flex items-center  w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
+                            <button type="button" className="flex items-center  md:w-1/3 mx-auto text-secondary bg-primary justify-center p-3 font-bold tracking-wide rounded-md dark:bg-violet-600 border border-secondary dark:text-gray-50">All Foods</button>
                         </Link>
                     </div>
                 </SwiperSlide>
