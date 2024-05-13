@@ -36,16 +36,7 @@ const NavbarProfile = () => {
             </div>
             <Toaster
                 position="top-right" />
-            <div className="relative inline-block ">
-                {/* <!-- Dropdown toggle button --> */}
-               
-
-
-
-
-                {/* <!-- Dropdown menu --> */}
-                
-            </div>
+            
             {isOpen && <div
 
 
@@ -62,7 +53,7 @@ const NavbarProfile = () => {
                 <hr className="border-gray-200 dark:border-gray-700 " />
                 <Link to={'/my-food'} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">My added food items</Link>
                 <Link to={'/add'} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Add food items</Link>
-                <Link to={'/my-ordered'} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">My ordered food items</Link>
+                <Link to={'/my-ordered'} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">My purchased food items</Link>
                 <hr className="border-gray-200 dark:border-gray-700 " />
 
                 <a href="#" className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">

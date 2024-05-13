@@ -9,17 +9,23 @@ import Swal from "sweetalert2";
 const Purchase = () => {
     const { id } = useParams()
   const navigate = useNavigate()
-    const {user}=useAuth()
+    const {user,setLoading}=useAuth()
     const [food, setFood] = useState([])
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/details/${id}`)
             .then(res => {
-                setFood(res.data)
+                setFood(res.data);
+                setLoading(false)
             })
 
     }, [id])
-    
-    const { food_name, food_image, price, quantity, purchase_amount,email } = food
+    const currentDate = new Date(Date.now()).toLocaleString()
+    const { food_name, food_image, price, quantity, purchase_amount, email } = food
+    const userEmail = user.email;
+    const buyDate = currentDate;
+    let amount = 0
+  
+
     
    let [Quantity, setQuantity]=useState(quantity)
     const handlePurchase = () => {
@@ -37,17 +43,23 @@ const Purchase = () => {
         axios.put(`${import.meta.env.VITE_API_URL}/details/${id}`, {
       
             quantity: quantity -1,
-            purchase_amount: purchase_amount ? purchase_amount : 0 + 1
+            purchase_amount: purchase_amount ? purchase_amount +1 : 0 + 1
         })
            .then(res => {
                console.log(res.data);
                if (res.data.modifiedCount > 0) {
+                   amount = amount + 1
+                   const data = { food_name, food_image, price, amount, userEmail, buyDate }
                    Swal.fire({
                        title: 'Success',
                        text: 'Successfully Purchased This item',
                        icon: 'success',
                        confirmButtonText: 'Cool'
                    })
+                   axios.post(`${import.meta.env.VITE_API_URL}/my-order`,data  )
+                       .then(res => {
+                           console.log(res.data)
+                       })
                    navigate('/')
 
                }
@@ -67,7 +79,7 @@ const Purchase = () => {
             
         }
     }
-    const currentDate = new Date(Date.now()).toLocaleString()
+   
     return (
         <div>
             <section className="dark:bg-gray-100 dark:text-gray-800 text-start">

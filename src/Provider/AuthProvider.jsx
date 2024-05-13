@@ -121,7 +121,7 @@ const AuthProvider = ({ children }) => {
 
         EmailSingIn,
         googleSingIn,
-      
+        setLoading,
         LogOut,
         LogInEmail,
         ProfileUpdate,
