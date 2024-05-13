@@ -27,6 +27,7 @@ const Purchase = () => {
   
 
     
+   // eslint-disable-next-line no-unused-vars
    let [Quantity, setQuantity]=useState(quantity)
     const handlePurchase = () => {
         if (email == user?.email) {
