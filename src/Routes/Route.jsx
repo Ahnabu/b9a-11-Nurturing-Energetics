@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/gallery",
-                element: <Gallery></Gallery>,
+                element:<PrivetRoute> <Gallery></Gallery></PrivetRoute>,
             },
             {
                 path: "/purchase/:id",

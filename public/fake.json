@@ -66,3 +66,91 @@
         "description": "Falafel is a deep-fried ball or patty made from ground chickpeas, fava beans, or both. It is a traditional Middle Eastern food, commonly served in a pita, which acts as a pocket, or wrapped in a flatbread known as lafa."
     }
 ]
+[
+    {
+        "food_image": "https://i.ibb.co/72WWhDP/image.png",
+        "food_name": "Sushi",
+        "description": "One of the best Japanese food you will ever try",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/0VZYbFV/image.png",
+        "food_name": "Pizza",
+        "description": "Classic Italian dish loved by all ages",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/QmD1dfp/image.png",
+        "food_name": "Burger",
+        "description": "All-American favorite, perfect for a quick bite",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/YXXv6s3/image.png",
+        "food_name": "Tacos",
+        "description": "Spicy and flavorful Mexican street food",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/7nM1ZyH/image.png",
+        "food_name": "Pad Thai",
+        "description": "Delicious Thai noodle dish with a perfect blend of flavors",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/G9tHYB5/image.png",
+        "food_name": "Steak",
+        "description": "Juicy and succulent, a meat lover's dream",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/9g9RnkP/image.png",
+        "food_name": "Pasta",
+        "description": "Comforting Italian staple, always a crowd-pleaser",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/DV4hNz8/image.png",
+        "food_name": "Sushi Burrito",
+        "description": "Innovative fusion of Japanese sushi and Mexican burrito",
+        "added_by": "Abu Horaira"
+    },
+    {
+        "food_image": "https://i.ibb.co/rcnTZxj/image.png",
+        "food_name": "Salad",
+        "description": "Fresh and healthy option packed with nutritious ingredients",
+        "added_by": "Abu Horaira"
+    }
+]
+[
+    {
+        "food_name": "Sushi Bowl",
+        "food_image": "https://i.ibb.co/RCcMgFw/image.png",
+        "food_category": "Japanese",
+        "price": "$14.99",
+        "purchase_amount": 2,
+        "made_by": "Chef Aiko",
+        "food_origin": "Japan",
+        "description": "A delectable sushi-inspired bowl featuring rice, fresh fish, avocado, cucumber, and a drizzle of savory sauce."
+    },
+    {
+        "food_name": "Gourmet Burger",
+        "food_image": "https://i.ibb.co/jHJ1vGt/image.png",
+        "food_category": "American",
+        "price": "$16.99",
+        "purchase_amount": 3,
+        "made_by": "Chef Aiko",
+        "food_origin": "United States",
+        "description": "A succulent burger made with premium beef, artisanal cheese, caramelized onions, and served with hand-cut fries."
+    },
+    {
+        "food_name": "Mediterranean Platter",
+        "food_image": "https://i.ibb.co/kH3nQfK/image.png",
+        "food_category": "Mediterranean",
+        "price": "$18.50",
+        "purchase_amount": 2,
+        "made_by": "Chef Aiko",
+        "food_origin": "Various",
+        "description": "An exquisite platter featuring hummus, falafel, tabbouleh, grilled vegetables, and warm pita bread, perfect for sharing."
+    }
+]
