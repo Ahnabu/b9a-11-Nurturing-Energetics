@@ -1,98 +1,73 @@
+import { useEffect, useState } from "react";
+import useAuth from "../../Hooks/UseAuth/useAuth";
+import axios from "axios";
 
 
 const UserReview = () => {
+    const {user,state,setState}= useAuth()
+    const [feedback, setFeedback] = useState([]);
+    const handleFeedback = e => {
+        e.preventDefault();
+        console.log('connected');
+        const name = user?.displayName;
+        const user_image = user?.photoURL;
+        const message = e.target.message.value;
+        const info = {
+            name,
+            user_image,
+            message
+        }
+        console.log(info);
+        //post api
+        axios.post(`${import.meta.env.VITE_API_URL}/feedback`, info)
+            .then(res => {
+                console.log(res.data)
+                setState(!state)
+            })
+    }
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_API_URL}/feedback`)
+       .then ( res => setFeedback(res.data))
+    },[state])
     return (
         <div>
-            <h1 className="text-secondary mx-auto">User Review</h1>
-            <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                <div className="px-8 text-center">
-                    <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.3] tracking-normal text-blue-gray-900 antialiased">
-                        This is an excellent product, the documentation is excellent and
-                        helped me get things done more efficiently.
-                    </h2>
+            <h1 className="text-secondary text-center my-4 mx-auto">User Feedback</h1>
+            {
+                feedback.map((item, index) => {
+                     <div key={index} className="grid text-start overflow-x-scroll rounded-lg  lg:overflow-visible shadow-lg ">
+                <div className="px-8 text-center flex relative">
+
+
                     <img
-                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
+                        src={`${item.user_image}`}
                         alt="image"
-                        className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center "
+                        className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center border border-secondary -top-5 left-4"
+                        title="Tania Andrew"
                     />
-                    <h6 className="block mt-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
-                        Tania Andrew
-                    </h6>
-                    <p className="block mb-4 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
-                        Lead Frontend Developer
+                    <p className="mb-6 block font-sans  font-medium leading-[1.3] tracking-normal text-blue-gray-900 antialiased py-4 rounded-lg border border-secondary px-4">
+                       {item.message}
                     </p>
-                    <div className="inline-flex items-center">
-                        <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="w-6 h-6 text-yellow-700 cursor-pointer"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                    clipRule="evenodd"
-                                ></path>
-                            </svg>
-                        </span>
-                        <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="w-6 h-6 text-yellow-700 cursor-pointer"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                    clipRule="evenodd"
-                                ></path>
-                            </svg>
-                        </span>
-                        <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="w-6 h-6 text-yellow-700 cursor-pointer"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                    clipRule="evenodd"
-                                ></path>
-                            </svg>
-                        </span>
-                        <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="w-6 h-6 text-yellow-700 cursor-pointer"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                    clipRule="evenodd"
-                                ></path>
-                            </svg>
-                        </span>
-                        <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="w-6 h-6 text-yellow-700 cursor-pointer"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                    clipRule="evenodd"
-                                ></path>
-                            </svg>
-                        </span>
-                    </div>
+
+
+
+
+                </div>
+            </div>
+                })
+            }
+           
+            <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800 mx-auto">
+                <div className="flex flex-col items-center w-full">
+                    <h2 className="text-3xl font-semibold text-center my-4">Your opinion matters!</h2>
+                   
+                    <form className="flex flex-col w-full" onSubmit={handleFeedback}>
+                        <textarea rows="3" placeholder="Message..." className="p-4 rounded-md resize-none dark:text-gray-800 dark:bg-gray-50" name="message"></textarea>
+                        <button type="submit" className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 dark:bg-violet-600 bg-primary text-secondary border border-secondary" disabled={user? false : true}>Leave feedback</button>
+                    </form>
+                    <p>You have to login to submit a feedback</p>
+                </div>
+                <div className="flex items-center justify-center">
+                    <a rel="noopener noreferrer" href="#" className="text-sm dark:text-gray-600">Maybe later</a>
                 </div>
             </div>
         </div>
