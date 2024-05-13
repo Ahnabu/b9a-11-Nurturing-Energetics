@@ -29,7 +29,7 @@ function LogIn() {
         console.log(email, password, );        
         try {
             const result = await LogInEmail(email, password)
-            console.log(result.user);
+            console.log(result?.user);
             await axios.post(
                 `${import.meta.env.VITE_API_URL}/jwt`,
                 { email: result?.user?.email },

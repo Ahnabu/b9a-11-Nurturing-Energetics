@@ -12,10 +12,12 @@ const PrivetRoute = ({ children }) => {
 
     const form = location?.pathname || '/'
     if (loading) {
-        return <div className="w-full items-center my-6 mx-auto text-center">
+        return (<div className="w-full items-center my-6 mx-auto text-center">
            
             <Lottie animationData={animation} className="h-24 w-24 text-gray-900/50 text-center mx-auto" />
+            <p>If loading for too long, please reload the website</p>
         </div>
+        )
     }
     if (!user) {
         return <Navigate to={'/login'} state={form}></Navigate>

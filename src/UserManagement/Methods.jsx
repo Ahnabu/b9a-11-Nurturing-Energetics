@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 const Methods = () => {
-    const { googleSingIn,setUser } = useAuth()
+    const { googleSingIn,setUser,user } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
     const handleGoogle = async () => {
@@ -22,7 +22,13 @@ const Methods = () => {
              await axios.post(
                 `${import.meta.env.VITE_API_URL}/jwt`,
                 { email: result?.user?.email },
-                { withCredentials: true })
+                 { withCredentials: true })
+            await axios.get(`${import.meta.env.VITE_API_URL}/user/${user?.email}`, {
+                withCredentials: true,
+                params: {
+                    email: user?.email
+                }
+            })          
             toast.success('Sing in Successful')
             
             setUser(result.user)

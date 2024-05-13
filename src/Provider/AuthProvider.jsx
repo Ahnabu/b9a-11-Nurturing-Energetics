@@ -76,12 +76,7 @@ const AuthProvider = ({ children }) => {
             console.log('on auth state changed', currentUser);
             // get token form server using email
             setUser(currentUser);
-            await axios.get(`${import.meta.env.VITE_API_URL}/user/${user?.email}`, {
-                withCredentials: true,
-                params: {
-                    email: currentUser?.email
-                }
-            })          
+           
             setLoading(false);
            
 

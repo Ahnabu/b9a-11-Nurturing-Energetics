@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Slider from "./Slider/Slider";
 import Special from "../Special/Special";
 import UserReview from "../UserReview/UserReview";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const [foods, setFoods] = useState([])
@@ -20,6 +21,9 @@ const Home = () => {
         <div>
             <Slider></Slider>
             <div className="text-center mt-4 p-4">
+                <Helmet>
+                    <title>Nurturing Energetics|| Home</title>
+                </Helmet>
 
                 <h1 className="text-secondary">Top Foods</h1>
                 <p>

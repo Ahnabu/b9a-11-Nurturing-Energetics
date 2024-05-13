@@ -21,7 +21,7 @@ import { Helmet } from "react-helmet";
 // @heroicons/react
 
 const AddFood = () => {
-    const { user, setState, state } = useAuth()
+    const { user, setState, state,setLoading } = useAuth()
     const [open, setOpen] = React.useState(false);
     const [foods, setFoods] = React.useState([])
     const [hoverIndex, setHoverIndex] = React.useState(null);
@@ -34,8 +34,10 @@ const AddFood = () => {
             .then(data => {
 
                 setFoods(data)
+                setLoading(false)
+                setState(!state)
             })
-    }, [state])
+    }, [])
     console.log(foods);
    
 
