@@ -106,12 +106,8 @@ export function StickyNavbar() {
 
                             <Link to={'/register'}>
                                 <Button
-                                    variant="gradient"
-                                    size="sm"
-                                    className="hidden lg:inline-block"
-                                >
-                                    Register
-                                </Button>
+                                    className={`flex items-center text-secondary bg-primary justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50 border border-secondary`}
+                                >Register</Button>
                             </Link>
 
 
