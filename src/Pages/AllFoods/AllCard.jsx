@@ -5,7 +5,7 @@ const AllCard = ({ food }) => {
     //  console.log(food);
     const { food_name, food_image, price, food_category,quantity,_id } = food
     return (
-        <div className="border border-secondary mx-auto rounded-md">
+        <div className="border border-secondary mx-auto rounded-md min-w-80">
             <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
                 <img src={`${food_image}`} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                 <div className="flex flex-col justify-between p-6 space-y-8">

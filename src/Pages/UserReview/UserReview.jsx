@@ -42,39 +42,39 @@ const UserReview = () => {
         axios.get(`${import.meta.env.VITE_API_URL}/feedback`)
             .then(res => setFeedback(res.data))
     }, [state])
-   
+
     return (
         <div>
             <h1 className="text-secondary text-center my-4 mx-auto">User Feedback</h1>
             <div className="flex flex-col gap-6 mt-6">
                 {
-                feedback.map(item => {
-               
-                return  (  <div key={item._id} className="grid text-start overflow-x-scroll rounded-lg  lg:overflow-visible shadow-lg ">
-                        <div className="px-8 text-center flex relative">
+                    feedback.map(item => {
+
+                        return (<div key={item._id} className="grid text-start overflow-x-scroll rounded-lg  lg:overflow-visible shadow-lg ">
+                            <div className="px-8 text-center flex relative mt-6">
 
 
-                            <img
-                                src={`${item.user_image}`}
-                                alt="image"
-                                className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center border border-secondary -top-5 left-4"
-                                
-                            />
-                        <div className="mb-6 block font-sans  font-medium leading-[1.3] tracking-normal text-blue-gray-900 antialiased py-4 rounded-lg border border-secondary px-4">
-                            <h6 className="text-start text-secondary font-semibold">{item.name} says :</h6>
-                            <p>{item.message} </p>
-                                
+                                <img
+                                    src={`${item.user_image}`}
+                                    alt="image"
+                                    className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center border border-secondary -top-5 left-4"
+
+                                />
+                                <div className="mb-6 block font-sans  font-medium leading-[1.3] tracking-normal text-blue-gray-900 antialiased py-4 rounded-lg border border-secondary px-4">
+                                    <h6 className="text-start text-secondary font-semibold">{item.name} says :</h6>
+                                    <p>{item.message} </p>
+
+                                </div>
+
+
+
+
                             </div>
-
-
-
-
-                        </div>
-                    </div>)
-                })
-            }
+                        </div>)
+                    })
+                }
             </div>
-            
+
 
             <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800 mx-auto">
                 <div className="flex flex-col items-center w-full">
