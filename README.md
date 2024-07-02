@@ -11,8 +11,12 @@
 <li>You can add your feedback</li>
 <li> Secure with cookie token</li>
 </ul>
-** If you want to run on your local machine**, then
-1. clone this repo.
-2. install the dependency by npm i
-3. set firebase config
-4. run this with npm run dev
+<h5>If you want to run on your local machine , then</h5>
+<ul>
+<li>clone this repo.</li>
+<li>install the dependency by npm i .</li>
+<li>set firebase config .</li>
+<li>run this with npm run dev .</li>
+  
+</ul>
+
